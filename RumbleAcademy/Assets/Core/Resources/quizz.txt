@@ -1,0 +1,7 @@
+# Catégorie | Question													| Reponse 1		| Reponse 2		 | Réponse 3		| Réponse 4		| Réponse Juste
+# Test        | Ma première question ?									| A ?			| ObiWan               	| Je ne sais pas	| Réponse D		| 4
+Culture G   | Quelle ville a ete la premiere a faire circuler un metro?| New-York       | Moscou		 | Londres		| Paris			| 3
+Culture G   | 1€ = ? Francs												| 6.55957		| 6.56987		 | 6.56987		| 6.456789		| 1
+SVT	    	| Quelle planete a une journee plus longue que son annee?| Mercure		| Mars			 | Jupiter		| Saturne		| 2
+Informatique| 802.11x est un protocol				| ZigBee		| Wi-Fi			 | Bluetooth		| Infrarouge		| 2
+Art	    	| Le Cri est un tableau qui a ete peint par:	| Anna Ancher		| Wassily Kandinsky	 | Claude Monet		| Edvard Munch		| 4
