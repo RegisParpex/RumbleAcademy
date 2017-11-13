@@ -18,9 +18,9 @@ public class SizeCoefInGame : MonoBehaviour {
         }
     }
 
-    public Vector2 screenSizeRef = new Vector2(1080f, 1920);
+    public Vector2 screenSizeRef = new Vector2(1920f, 1080f);
 
-    public float originalRatio = 1080f / 1920f;
+    public float originalRatio = 1920f / 1080f;
 
     public float GetSizeCoeff()
     {

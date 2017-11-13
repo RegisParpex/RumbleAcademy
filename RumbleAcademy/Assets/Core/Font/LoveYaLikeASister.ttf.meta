@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d735ce184d4d38d489224e99826901d2
+timeCreated: 1510525841
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Love Ya Like A Sister
+  fontNames:
+  - Love Ya Like A Sister
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
