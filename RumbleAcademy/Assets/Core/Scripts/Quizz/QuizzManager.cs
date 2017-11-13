@@ -16,14 +16,17 @@ public class QuizzManager : MonoBehaviour {
     public Text reponseB;
     public Text reponseC;
     public Text reponseD;
-    public Text RepGr1;
-    public Text RepGr2;
+    public Text GoodGr1;
+    public Text GoodGr2;
 
     private int goodResp;
+    private int respGr1;
+    private int respGr2;
     private bool goodRespGr1;
     private bool goodRespGr2;
-    private bool haveRepGr1;
-    private bool haveRepGr2;
+    private bool oneResp;
+
+    private int numActualQuestion;
 
     // Use this for initialization
     void Start()
@@ -52,21 +55,17 @@ public class QuizzManager : MonoBehaviour {
         }
 
         strReader.Close();
-        
-        getQuestion(0);
 
-        goodRespGr1 = false;
-        goodRespGr2 = false;
-        
+        numActualQuestion = 0;
+        getQuestion(numActualQuestion);
     }
 
 
     void getQuestion(int numQuestion)
     {
-        haveRepGr1 = false;
-        haveRepGr2 = false;
-        RepGr1.gameObject.SetActive(false);
-        RepGr2.gameObject.SetActive(false);
+        
+        GoodGr1.gameObject.SetActive(false);
+        GoodGr2.gameObject.SetActive(false);
         goodResp = Int32.Parse(myQuizz[numQuestion][6]);
 
         questionText.text = myQuizz[numQuestion][1];
@@ -76,125 +75,101 @@ public class QuizzManager : MonoBehaviour {
         reponseD.text = myQuizz[numQuestion][5];
     }
 
-    private void Update()
+    void nextQuestion()
     {
-        if(haveRepGr1 == false)
+        GoodGr1.gameObject.SetActive(false);
+        GoodGr2.gameObject.SetActive(false);
+
+        respGr1 = 0;
+        respGr2 = 0;
+        numActualQuestion++;
+        getQuestion(numActualQuestion);
+    }
+
+    void Update()
+    {
+        if(respGr1 == 0 && !oneResp)
         {
-            if (Input.GetButtonDown("Player1_ButtonX"))
+            if (InputManager.Player1_A())
             {
-                RepGr1.gameObject.SetActive(true);
-                haveRepGr1 = true;
-                if (goodResp == 1)
-                {
-                    goodRespGr1 = true;
-                    RepGr1.text = "Vrai";
-                }
-                else
-                {
-                    RepGr1.text = "Faux";
-                }
+                respGr1 = 1;
+                oneResp = true;
             }
-            if (Input.GetButtonDown("Player1_ButtonY"))
+            if (InputManager.Player1_B())
             {
-                RepGr1.gameObject.SetActive(true);
-                haveRepGr1 = true;
-                if (goodResp == 2)
-                {
-                    goodRespGr1 = true;
-                    RepGr1.text = "Vrai";
-                }
-                else
-                {
-                    RepGr1.text = "Faux";
-                }
+                respGr1 = 2;
+                oneResp = true;
             }
-            if (Input.GetButtonDown("Player1_ButtonA"))
+            if (InputManager.Player1_X())
             {
-                RepGr1.gameObject.SetActive(true);
-                haveRepGr1 = true;
-                if (goodResp == 3)
-                {
-                    goodRespGr1 = true;
-                    RepGr1.text = "Vrai";
-                }
-                else
-                {
-                    RepGr1.text = "Faux";
-                }
+                respGr1 = 3;
+                oneResp = true;
             }
-            if (Input.GetButtonDown("Player1_ButtonB"))
+            if (InputManager.Player1_Y())
             {
-                RepGr1.gameObject.SetActive(true);
-                haveRepGr1 = true;
-                if (goodResp == 4)
-                {
-                    goodRespGr1 = true;
-                    RepGr1.text = "Vrai";
-                }
-                else
-                {
-                    RepGr1.text = "Faux";
-                }
+                respGr1 = 4;
+                oneResp = true;
             }
         }
-        if (haveRepGr2 == false)
+           
+
+        if (respGr2 == 0 && !oneResp)
         {
-            if (Input.GetButtonDown("Player3_ButtonX"))
+            if (InputManager.Player2_A())
             {
-                RepGr2.gameObject.SetActive(true);
-                haveRepGr2 = true;
-                if (goodResp == 1)
-                {
-                    goodRespGr2 = true;
-                    RepGr2.text = "Vrai";
-                }
-                else
-                {
-                    RepGr1.text = "Faux";
-                }
+                respGr2 = 1;
+                oneResp = true;
             }
-            if (Input.GetButtonDown("Player3_ButtonY"))
+            if (InputManager.Player2_B())
             {
-                RepGr2.gameObject.SetActive(true);
-                haveRepGr2 = true;
-                if (goodResp == 2)
-                {
-                    goodRespGr2 = true;
-                    RepGr2.text = "Vrai";
-                }
-                else
-                {
-                    RepGr1.text = "Faux";
-                }
+                respGr2 = 2;
+                oneResp = true;
             }
-            if (Input.GetButtonDown("Player3_ButtonA"))
+            if (InputManager.Player2_X())
             {
-                RepGr2.gameObject.SetActive(true);
-                haveRepGr2 = true;
-                if (goodResp == 3)
-                {
-                    goodRespGr2 = true;
-                    RepGr2.text = "Vrai";
-                }
-                else
-                {
-                    RepGr1.text = "Faux";
-                }
+                respGr2 = 3;
+                oneResp = true;
             }
-            if (Input.GetButtonDown("Player3_ButtonB"))
+            if (InputManager.Player2_Y())
             {
-                RepGr2.gameObject.SetActive(true);
-                haveRepGr2 = true;
-                if (goodResp == 4)
-                {
-                    goodRespGr2 = true;
-                    RepGr2.text = "Vrai";
-                }
-                else
-                {
-                    RepGr1.text = "Faux";
-                }
+                respGr2 = 4;
+                oneResp = true;
             }
         }
+
+        if(respGr1 != 0)
+        {
+            if (respGr1 == goodResp && oneResp)
+            {
+                oneResp = false;
+                StartCoroutine(GoodResponse(1));
+            }
+        }
+
+
+        if (respGr2 != 0)
+        {
+            if (respGr2 == goodResp && oneResp)
+            {
+                oneResp = false;
+                StartCoroutine(GoodResponse(2));
+            }
+        }
+    }
+
+
+    IEnumerator GoodResponse(int GrGoodResponse)
+    {
+        if (GrGoodResponse == 1)
+        {
+            GoodGr1.gameObject.SetActive(true);
+        }
+        else
+        {
+            GoodGr2.gameObject.SetActive(true);
+        }
+        yield return new WaitForSeconds(2);
+
+        nextQuestion();
     }
 }
